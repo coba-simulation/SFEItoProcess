@@ -68,8 +68,8 @@ dx	= c * sqrt(dt)                              # defines the scaling factor dx
 dw	= w * dx                                    # gives the increments of a Wiener process
   
 # calculation of the general Ito process
-S		= matrix(0, n, 1)                       # defines an vector s of length n containing zeros
-S[1]	= start_val                             # defines the staring value
+S     = matrix(0, n, 1)                         # defines an vector s of length n containing zeros
+S[1]  = start_val                               # defines the staring value
   
   for (i in 2:dim(dw)[1]) {
     S[i]  = mu(S[i-1],t[i-1])*dt + sigma(S[i-1],t[i-1])*dw[i] + S[i-1]
