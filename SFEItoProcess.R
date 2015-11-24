@@ -41,14 +41,14 @@ set.seed(0)                                   # regulates that random numbers do
 
 mu = function(S,t) {
   
-  mu  = 10*(10-S*t)								# define the functional form of mu
+  mu  = 10*(10-S*t)                           # define the functional form of mu
   
   return(mu)
 }
 
 sigma = function(S,t) {
   
-  sigma  = 5*S+10*t								# define the functional form of sigma
+  sigma  = 5*S+10*t                           # define the functional form of sigma
   
   return(sigma)
 }
@@ -62,14 +62,14 @@ n         = floor(1/dt)
 t         = seq(0, n, by = dt) 
 
 # calculation of the Wiener process
-w	= matrix(runif(n), n, 1)					# defines a vector w which contains values randomly choosen greater or smaller than zero
-w	= 2 * (w > 0.5) - 1							# rescales the vector w to -1 or 1
-dx	= c * sqrt(dt)								# defines the scaling factor dx
-dw	= w * dx									# gives the increments of a Wiener process
+w	= matrix(runif(n), n, 1)                    # defines a vector w which contains values randomly choosen greater or smaller than zero
+w	= 2 * (w > 0.5) - 1                         # rescales the vector w to -1 or 1
+dx	= c * sqrt(dt)                              # defines the scaling factor dx
+dw	= w * dx                                    # gives the increments of a Wiener process
   
 # calculation of the general Ito process
-S		= matrix(0, n, 1)						# defines an vector s of length n containing zeros
-S[1]	= start_val								# defines the staring value
+S		= matrix(0, n, 1)                       # defines an vector s of length n containing zeros
+S[1]	= start_val                             # defines the staring value
   
   for (i in 2:dim(dw)[1]) {
     S[i]  = mu(S[i-1],t[i-1])*dt + sigma(S[i-1],t[i-1])*dw[i] + S[i-1]
